@@ -95,6 +95,8 @@ q2 <- cor(t(my_data_20))
 
 
 corrplot(q2, method="circle")
+#corrplot::corrplot
+
 
 ##Clustering
 
@@ -107,6 +109,32 @@ plot(hc)
 
 #Problem B
 
+# Model Based Clustering
+library(mclust)
+fit <- Mclust(q2)
+plot(fit)
+
+#kmeans
 
 
+#Problem C
+hc <- hclust(dist(q2))
+head(hc)
+
+groups.4 = cutree(hc,4)
+
+groups.4 == 1
+hc["labels"]
+
+group1 <- hc["labels"][groups.4 == 1]
+group2 <- hc["labels"][groups.4 == 2]
+group3 <- hc["labels"][groups.4 == 3]
+group4 <- hc["labels"][groups.4 == 4]
+
+group1
+
+max(length(group1), length(group2), length(group3), length(group4))
+
+
+# library(pvclust)
 
